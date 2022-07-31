@@ -12,7 +12,7 @@ This script measures and outputs the response time of DNS server name resolution
     * ResolveName : DNS Server Resolve DNS Name define. (Default : google.com)
     * QueryCount : Query repeat count define. (Default : 10)
     * Interval_Time : Query Interval define. Unit is Seconds. (Default : 1)
-        * ** Changing this value may increase the load on the DNS server being queried.** 
+        * **Changing this value may increase the load on the DNS server being queried.
 
 3. Run the [DNS_Response_Time_Script.ps1] script.
 
