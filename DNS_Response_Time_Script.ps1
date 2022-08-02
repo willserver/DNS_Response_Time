@@ -65,8 +65,14 @@ function GET_DNS_ResponseTime {
     foreach ($line in $DNS_Server_List) {
         #DNS query counter loop.
         for ($i = 0; $i -lt $Query_Count; $i++) {
-            #do Measure-Command. DNS resolve exit. 
-            $RAW_Query_Result = Measure-Command {Resolve-DnsName $Resolve_Name -DnsOnly -Type A -NoHostsFile -server $line.IP}
+            try {
+                #do Measure-Command. DNS resolve exit. 
+                $RAW_Query_Result = Measure-Command {Resolve-DnsName $Resolve_Name -DnsOnly -Type A -NoHostsFile -server $line.IP} -ErrorAction Stop
+            }
+            catch {
+                
+            }
+            
             #Output string Generate.
             $Create_Output_String = $line.DNS_ServerName + "," + $line.IP + "," + $RAW_Query_Result.TotalMilliseconds + "," + $Resolve_Name
             Write-Host $Create_Output_String
